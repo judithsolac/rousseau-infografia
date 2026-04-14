@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean-Jacques Rousseau - Educación Natural</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            font-size: 14.6px;
+            background: #fdfdfd;
+            color: #4a4a4a;
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* HERO SECTION */
+        header {
+            background: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/RnYGEdWsYjMLOPHr.jpg') no-repeat center center;
+            background-size: cover;
+            color: #2d5016;
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            z-index: 1;
+        }
+
+        header h1, header .subtitle, header .tagline {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #2d5016;
+        }
+
+        header .subtitle {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #4a7c2c;
+            letter-spacing: 1px;
+        }
+
+        header .tagline {
+            font-size: 1.1em;
+            margin-top: 20px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .content {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* SECCIÓN INTRODUCCIÓN */
+        .intro-section {
+            text-align: center;
+            margin-bottom: 100px;
+            padding: 50px;
+            background: #f8fdf8;
+            border-radius: 12px;
+            border: 1px solid #e8f5e8;
+        }
+
+        .intro-section h2 {
+            color: #2d5016;
+            font-size: 2em;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .intro-section p {
+            color: #555;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* LÍNEA DE TIEMPO */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #e8f5e8;
+            top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+        }
+
+        /* BLOQUES DE ETAPAS */
+        .etapa-bloque {
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .etapa-contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .etapa-contenedor:nth-child(even) {
+            direction: rtl;
+        }
+
+        .etapa-contenedor:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        @media (max-width: 768px) {
+            .etapa-contenedor {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .etapa-contenedor:nth-child(even) {
+                direction: ltr;
+            }
+        }
+
+        /* IMÁGENES DE ETAPAS */
+        .etapa-img-box {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.5s ease;
+        }
+
+        .etapa-img-box:hover {
+            transform: scale(1.02);
+        }
+
+        .etapa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(20%) contrast(90%);
+        }
+
+        /* TARJETA DE CONTENIDO */
+        .etapa-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .etapa-card:hover {
+            border-color: #d4f1d4;
+            box-shadow: 0 5px 20px rgba(45, 80, 22, 0.05);
+        }
+
+        .etapa-card h3 {
+            color: #2d5016;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .etapa-edad {
+            color: #7cb342;
+            font-size: 1em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .etapa-card p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .etapa-card ul {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .etapa-card li {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* SECCIÓN DE IDEAS CLAVE */
+        .ideas-seccion {
+            padding: 100px 40px;
+            background: #f8fdf8;
+        }
+
+        .ideas-seccion h2 {
+            text-align: center;
+            color: #2d5016;
+            font-size: 2.2em;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .idea-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .idea-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .idea-img-box {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .idea-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .idea-content {
+            padding: 30px;
+        }
+
+        .idea-content h4 {
+            color: #2d5016;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .idea-content p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* SECCIÓN BIOGRAFÍA */
+        .biografia-seccion {
+            padding: 100px 40px;
+            background: white;
+        }
+
+        .biografia-contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .biografia-contenedor {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .retrato-box {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .retrato-img {
+            width: 100%;
+            display: block;
+        }
+
+        .biografia-texto h2 {
+            color: #2d5016;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .biografia-texto p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        /* SECCIÓN OBRAS */
+        .obras-seccion {
+            padding: 100px 40px;
+            background: #fafafa;
+        }
+
+        .obras-seccion h2 {
+            text-align: center;
+            color: #2d5016;
+            font-size: 2.2em;
+            margin-bottom: 60px;
+        }
+
+        .obras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .obra-item {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            display: flex;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .obra-img-thumb {
+            width: 80px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .obra-info h3 {
+            color: #2d5016;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .obra-ano {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+
+        .obra-info p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* NOTA DE DISEÑO PEDAGÓGICO */
+        .nota-pedagogica {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8fdf8 0%, #f0f8f0 100%);
+            border-radius: 12px;
+            border: 2px dashed #d4f1d4;
+            text-align: center;
+        }
+
+        .nota-pedagogica h3 {
+            color: #2d5016;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .nota-pedagogica p {
+            color: #555;
+            font-size: 1.1em;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .content { padding: 40px 20px; }
+            .etapa-img-box { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>Jean-Jacques Rousseau</h1>
+            <div class="subtitle">La Educación Natural</div>
+            <div class="tagline">Hacia el descubrimiento autónomo del ser</div>
+        </header>
+
+        <!-- INTRODUCCIÓN -->
+        <div class="content">
+            <section class="intro-section">
+                <h2>El Paidocentrismo: El Niño como Centro</h2>
+                <p>Rousseau revolucionó la pedagogía al colocar al niño en el centro del proceso educativo. No es la sociedad quien debe moldear al niño, sino la educación quien debe acompañar su desarrollo natural. A través de etapas progresivas, el ser humano crece desde la dependencia física hacia la autonomía moral y la libertad responsable.</p>
+            </section>
+
+            <!-- LÍNEA DE TIEMPO -->
+            <section class="timeline">
+                <!-- ETAPA 1: INFANCIA -->
+                <div class="etapa-bloque">
+                    <div class="etapa-contenedor">
+                        <div class="etapa-img-box">
+                            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/UyRTRgGfBIsEKcBu.jpg" alt="Niños jugando en la naturaleza" class="etapa-img">
+                        </div>
+                        <div class="etapa-card">
+                            <h3>Infancia</h3>
+                            <div class="etapa-edad">0 a 12 años • Educación Física</div>
+                            <p><strong>Objetivo:</strong> Desarrollo sensorial y corporal en libertad.</p>
+                            <p>El niño es puro cuerpo y sentidos. Debe moverse libremente y explorar el mundo sin restricciones artificiales. La naturaleza es su primer aula.</p>
+                            <ul>
+                                <li>Libertad de movimiento y juego</li>
+                                <li>Contacto directo con los elementos</li>
+                                <li>Desarrollo de los sentidos externos</li>
+                                <li>Protección contra el vicio social</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 2: ADOLESCENCIA -->
+                <div class="etapa-bloque">
+                    <div class="etapa-contenedor">
+                        <div class="etapa-img-box">
+                            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/nWfDhGcKWkbbIJOO.jpg" alt="Niños explorando la naturaleza" class="etapa-img">
+                        </div>
+                        <div class="etapa-card">
+                            <h3>Adolescencia</h3>
+                            <div class="etapa-edad">12 a 15 años • Educación Intelectual</div>
+                            <p><strong>Objetivo:</strong> Despertar de la razón y la curiosidad.</p>
+                            <p>Aparece la sed de saber. El tutor no impone conocimientos, sino que crea situaciones para que el joven los descubra por necesidad y utilidad práctica.</p>
+                            <ul>
+                                <li>Aprendizaje por experiencia directa</li>
+                                <li>Utilidad práctica de lo aprendido</li>
+                                <li>Desarrollo del juicio propio</li>
+                                <li>Educación negativa: evitar el error</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 3: JUVENTUD -->
+                <div class="etapa-bloque">
+                    <div class="etapa-contenedor">
+                        <div class="etapa-img-box">
+                            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/zESgpYoUlebfXFwg.jpg" alt="Escena social de la época" class="etapa-img">
+                        </div>
+                        <div class="etapa-card">
+                            <h3>Juventud</h3>
+                            <div class="etapa-edad">15 a 20 años • Educación Moral</div>
+                            <p><strong>Objetivo:</strong> Formación del corazón y la piedad.</p>
+                            <p>El joven se abre al mundo social. Es el momento de cultivar la empatía y la virtud moral, reconociendo al otro como un igual en el sentimiento.</p>
+                            <ul>
+                                <li>Desarrollo de la piedad y compasión</li>
+                                <li>Educación de las pasiones</li>
+                                <li>Conciencia de la justicia social</li>
+                                <li>Formación de la voluntad moral</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETAPA 4: MADUREZ -->
+                <div class="etapa-bloque">
+                    <div class="etapa-contenedor">
+                        <div class="etapa-img-box">
+                            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/pxsoFslvlloRUujf.jpg" alt="Familia y sociedad" class="etapa-img">
+                        </div>
+                        <div class="etapa-card">
+                            <h3>Madurez</h3>
+                            <div class="etapa-edad">20+ años • Educación Ciudadana</div>
+                            <p><strong>Objetivo:</strong> Autonomía y responsabilidad social.</p>
+                            <p>El hombre alcanza su plenitud. Es capaz de vivir en sociedad respetando el contrato social y manteniendo su libertad interior bajo la <strong>Voluntad General</strong>.</p>
+                            <ul>
+                                <li>Soberanía sobre uno mismo</li>
+                                <li>Compromiso con el bien común</li>
+                                <li>Vida familiar y civil responsable</li>
+                                <li>Libertad bajo la ley de la razón</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- IDEAS CLAVE -->
+        <section class="ideas-seccion">
+            <h2>Pilares de su Pensamiento</h2>
+            <div class="ideas-grid">
+                <div class="idea-item">
+                    <div class="idea-img-box">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/FLvYVfwMcokyovmx.jpg" alt="Naturaleza pura" class="idea-img">
+                    </div>
+                    <div class="idea-content">
+                        <h4>Bondad Natural</h4>
+                        <p>El ser humano es bueno por naturaleza; es la sociedad y sus instituciones las que lo corrompen. La educación debe proteger esta pureza original.</p>
+                    </div>
+                </div>
+                <div class="idea-item">
+                    <div class="idea-img-box">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/YbkdnigndzkbxXMa.jpg" alt="Libros antiguos" class="idea-img">
+                    </div>
+                    <div class="idea-content">
+                        <h4>Educación Negativa</h4>
+                        <p>No consiste en enseñar virtudes, sino en preservar el corazón del vicio. El tutor prepara el camino para que el niño aprenda de la experiencia.</p>
+                    </div>
+                </div>
+                <div class="idea-item">
+                    <div class="idea-img-box">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/JnPJZvyFMZfcmUYF.jpg" alt="Actividad práctica" class="idea-img">
+                    </div>
+                    <div class="idea-content">
+                        <h4>Aprender Haciendo</h4>
+                        <p>La experiencia directa es el único maestro verdadero. El conocimiento debe surgir de la necesidad y la acción, no de la memorización pasiva.</p>
+                    </div>
+                </div>
+                <!-- NUEVOS CONCEPTOS -->
+                <div class="idea-item">
+                    <div class="idea-img-box">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/RnYGEdWsYjMLOPHr.jpg" alt="Corazón y naturaleza" class="idea-img">
+                    </div>
+                    <div class="idea-content">
+                        <h4>Amor de sí vs. Amor propio</h4>
+                        <p>El <strong>Amor de sí</strong> es el instinto natural de autoconservación, sano y bueno. El <strong>Amor propio</strong> nace de la comparación social, el orgullo y la vanidad, siendo la raíz de la corrupción humana.</p>
+                    </div>
+                </div>
+                <div class="idea-item">
+                    <div class="idea-img-box">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/pxsoFslvlloRUujf.jpg" alt="Sociedad justa" class="idea-img">
+                    </div>
+                    <div class="idea-content">
+                        <h4>La Voluntad General</h4>
+                        <p>Es el fin último de la educación política: formar ciudadanos que subordinen sus intereses particulares al bien común, actuando según la razón colectiva de una sociedad libre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIOGRAFÍA -->
+        <section class="biografia-seccion">
+            <div class="biografia-contenedor">
+                <div class="retrato-box">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/kbPCvmsboOknJzax.jpg" alt="Retrato de Rousseau" class="retrato-img">
+                </div>
+                <div class="biografia-texto">
+                    <h2>Jean-Jacques Rousseau</h2>
+                    <p>Nacido en Ginebra (1712-1778), Rousseau fue el gran disidente de la Ilustración. Mientras otros celebraban la razón técnica, él defendía el sentimiento y la naturaleza.</p>
+                    <p>Su vida errante y autodidacta le permitió observar las contradicciones de la sociedad de su tiempo. Sus ideas sobre la soberanía popular y la educación natural sentaron las bases de la democracia moderna y la pedagogía contemporánea.</p>
+                    <p>Fue un hombre de paradojas que, a través de sus obras, nos invitó a mirar hacia nuestro interior para encontrar la verdad y la libertad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBRAS CLAVE -->
+        <section class="obras-seccion">
+            <h2>Obras Fundamentales</h2>
+            <div class="obras-grid">
+                <div class="obra-item">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/FLFNXiZVcnXoOnRv.jpg" alt="Libro antiguo" class="obra-img-thumb">
+                    <div class="obra-info">
+                        <h3>Emilio, o De la Educación</h3>
+                        <p class="obra-year">1762</p>
+                        <p>El tratado pedagógico que cambió la historia. Propone una educación basada en el desarrollo natural del niño.</p>
+                    </div>
+                </div>
+                <div class="obra-item">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/FLFNXiZVcnXoOnRv.jpg" alt="Libro antiguo" class="obra-img-thumb">
+                    <div class="obra-info">
+                        <h3>El Contrato Social</h3>
+                        <p class="obra-year">1762</p>
+                        <p>Fundamento de la política moderna. Define la libertad como la obediencia a la <strong>Voluntad General</strong> que nosotros mismos nos hemos dado.</p>
+                    </div>
+                </div>
+                <div class="obra-item">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663549226605/FLFNXiZVcnXoOnRv.jpg" alt="Libro antiguo" class="obra-img-thumb">
+                    <div class="obra-info">
+                        <h3>Las Confesiones</h3>
+                        <p class="obra-year">1782</p>
+                        <p>Una mirada introspectiva sin precedentes. Muestra cómo la infancia es la raíz de toda la vida adulta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOTA DE DISEÑO PEDAGÓGICO -->
+        <section class="nota-pedagogica">
+            <h3>Nota de Diseño Pedagógico</h3>
+            <p>"El diseño visual de esta infografía está inspirado en la pedagogía de Rousseau: la estructura por bloques respeta el ritmo evolutivo del aprendizaje (paidocentrismo) y su estética evoca la importancia de la educación natural."</p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>Infografía Académica sobre Jean-Jacques Rousseau | Diseño Minimalista Orgánico | © 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
